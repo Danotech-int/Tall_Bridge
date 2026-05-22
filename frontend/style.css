@@ -91,6 +91,28 @@ nav {
   font-weight: 500;
 }
 
+.nav-auth {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--persian);
+  border: 1px solid var(--persian);
+  padding: .6rem 1.2rem;
+  border-radius: 4px;
+  font-size: .85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-ghost:hover {
+  background: var(--persian);
+  color: var(--lime);
+}
 .btn-dark {
   background: var(--persian);
   color: var(--lime);
@@ -955,6 +977,64 @@ footer p {
   flex-shrink: 0;
 }
 
+/* FAQ Section Styling */
+.faq {
+    padding: 4rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-list {
+    margin-top: 2rem;
+    border-top: 1px solid #ede4f8;
+}
+
+.faq-item {
+    border-bottom: 1px solid #ede4f8;
+}
+
+.faq-q {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 1.5rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "DM Sans", sans-serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--persian);
+    cursor: pointer;
+    text-align: left;
+}
+
+.faq-icon {
+    font-size: 1.5rem;
+    color: var(--lime);
+    transition: transform 0.3s ease;
+    pointer-events: none; /* Let the button handle the click */
+}
+
+.faq-a {
+    display: grid; /* Using grid for smooth animation */
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.3s ease-out;
+    color: #666;
+    line-height: 1.6;
+}
+
+.faq-a div {
+    overflow: hidden;
+}
+
+.faq-item.active .faq-a {
+    grid-template-rows: 1fr;
+}
+
+.faq-item.active .faq-icon {
+    transform: rotate(45deg);
+}
 /* ══ COURSE DETAIL PAGE ══ */
 .detail-hero {
   background: var(--persian);
@@ -1316,5 +1396,52 @@ footer p {
   font-weight: 300;
   font-style: italic;
   margin-bottom: 1rem;
+}
+
+
+.auth-section {
+    padding: 5rem 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    background: #fafafa;
+}
+
+.auth-card {
+    background: #fff;
+    padding: 3rem;
+    border-radius: 12px;
+    border: 1px solid #ede4f8;
+    width: 100%;
+    max-width: 400px;
+}
+
+.auth-card h2 {
+    font-family: "Lora", serif;
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    color: var(--persian);
+}
+
+.auth-card h2 em { color: var(--grape); font-style: italic; }
+
+.auth-card input {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd0f5;
+    border-radius: 6px;
+}
+
+.btn-google {
+    width: 100%;
+    padding: 0.8rem;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-bottom: 1rem;
 }
 
