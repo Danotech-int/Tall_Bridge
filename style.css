@@ -1445,3 +1445,9 @@ footer p {
     margin-bottom: 1rem;
 }
 
+.divider {
+    text-align: center;
+    margin: 1rem 0;
+    color: #999;
+    font-size: 0.8rem;
+}
