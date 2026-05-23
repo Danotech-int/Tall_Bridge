@@ -1451,3 +1451,10 @@ footer p {
     color: #999;
     font-size: 0.8rem;
 }
+
+/* Example of what you should be adding to the BOTTOM of style.css */
+@media (max-width: 768px) {
+    /* Rules here only apply when the screen is phone-sized */
+    body { font-size: 14px; }
+    .auth-card { width: 95%; }
+}
