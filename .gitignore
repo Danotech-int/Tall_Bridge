@@ -1,0 +1,7 @@
+# Ignore the backend folder
+backend/
+
+# Ignore other common junk
+node_modules/
+.env
+.DS_Store

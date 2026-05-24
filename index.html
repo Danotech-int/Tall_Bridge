@@ -21,12 +21,11 @@
   <ul class="nav-links">
     <li><a onclick="showPage('home')" id="nav-home" class="active">Home</a></li>
     <li><a onclick="showPage('courses')" id="nav-courses">Courses</a></li>
-    <li><a>For Organisations</a></li>
-    <li><a>About</a></li>
+    <li><a onclick="showPage('organisation')" id="nav-organisation"> For Organisations</a></li>
+    <li><a onclick="showPage('about')" id="nav-about">About</a></li>
   </ul>
   <div class="nav-auth">
-    <a href="login.html" class="btn-ghost">Login</a>
-    <a href="signup.html" class="btn-dark">Sign Up</a>
+    <a href="auth.html" class="btn-ghost">Create Account</a>
   </div>
 </nav>
 
@@ -43,7 +42,7 @@
     <p class="hero-sub">Tall Bridge Institute builds courses that create real, measurable change — in how you think and how you perform. Whether you are an individual building a new income stream, or an organisation closing a performance gap, we build the learning that moves the needle.</p>
     <div class="hero-btns">
       <button class="btn-lime" onclick="showPage('courses')">Browse Courses →</button>
-      <button class="btn-outline-lime">For Organisations</button>
+      <button class="btn-outline-lime" onclick="showPage('organisation')">For Organisations</button>
     </div>
   </div>
 </section>
@@ -55,7 +54,7 @@
     <div class="course-card">
       <div class="course-top">
         <svg class="course-top-wave" viewBox="0 0 120 160" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><path d="M60 0 C30 30,10 60,20 90 C30 120,80 130,70 160 L120 160 L120 0 Z" fill="#96D74C"/><path d="M75 0 C45 30,25 60,35 90 C45 120,95 130,85 160 L120 160 L120 0 Z" fill="none" stroke="#721CB8" stroke-width="1" opacity="0.6"/></svg>
-        <div class="course-tag">Live Now</div>
+        <div class="course-tag"></div>
         <h3>ESL Online Teaching</h3>
         <div class="course-tagline">You will go from speaking English to earning from it.</div>
       </div>
@@ -68,7 +67,7 @@
     <div class="course-card">
       <div class="course-top">
         <svg class="course-top-wave" viewBox="0 0 120 160" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><path d="M60 0 C30 30,10 60,20 90 C30 120,80 130,70 160 L120 160 L120 0 Z" fill="#96D74C"/><path d="M75 0 C45 30,25 60,35 90 C45 120,95 130,85 160 L120 160 L120 0 Z" fill="none" stroke="#721CB8" stroke-width="1" opacity="0.6"/></svg>
-        <div class="course-tag">Coming Soon</div>
+        <div class="course-tag"></div>
         <h3>Professional Voiceover</h3>
         <div class="course-tagline">You will turn your voice into a scalable income stream.</div>
       </div>
@@ -81,7 +80,7 @@
     <div class="course-card">
       <div class="course-top">
         <svg class="course-top-wave" viewBox="0 0 120 160" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><path d="M60 0 C30 30,10 60,20 90 C30 120,80 130,70 160 L120 160 L120 0 Z" fill="#96D74C"/><path d="M75 0 C45 30,25 60,35 90 C45 120,95 130,85 160 L120 160 L120 0 Z" fill="none" stroke="#721CB8" stroke-width="1" opacity="0.6"/></svg>
-        <div class="course-tag">Coming Soon</div>
+        <div class="course-tag"></div>
         <h3>Project Management for Beginners</h3>
         <div class="course-tagline">You will manage projects with clarity, not chaos.</div>
       </div>
@@ -116,8 +115,8 @@
         <div class="process">
           <div class="step"><div class="step-num">1</div><div><h4>Discovery</h4><p>We define the gap and the desired change.</p></div></div>
           <div class="step"><div class="step-num">2</div><div><h4>Curriculum Design</h4><p>Modules, outcomes, assessments mapped to your goals.</p></div></div>
-          <div class="step"><div class="step-num">3</div><div><h4>Production</h4><p>Videos, voiceovers, quizzes — built in your brand.</p></div></div>
-          <div class="step"><div class="step-num">4</div><div><h4>Delivery</h4><p>Hosted and launched. We support you through go-live.</p></div></div>
+          <div class="step"><div class="step-num">3</div><div><h4>Production</h4><p>Videos, voiceovers, quizzes built in your brand.</p></div></div>
+          <div class="step"><div class="step-num">4</div><div><h4>Delivery</h4><p>Hosted and launched. We support you through go live.</p></div></div>
         </div>
       </div>
     </div>
@@ -128,7 +127,7 @@
   <svg class="cta-wave" viewBox="0 0 220 500" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><path d="M110 0 C60 70,20 120,40 200 C60 280,160 310,140 400 C120 480,50 510,70 560 L220 560 L220 0 Z" fill="#721CB8"/><path d="M126 0 C76 70,36 120,56 200 C76 280,176 310,156 400 C136 480,66 510,86 560 L220 560 L220 0 Z" fill="none" stroke="#421869" stroke-width="1.2" opacity="0.6"/></svg>
   <svg class="cta-wave2" viewBox="0 0 200 500" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><path d="M100 0 C55 70,15 120,35 200 C55 280,150 310,130 400 C110 480,45 510,65 560 L200 560 L200 0 Z" fill="#721CB8"/></svg>
   <h2>Ready to cross the bridge?</h2>
-  <p>Individual learner or growing organisation — the bridge is built. Come cross it.</p>
+  <p>Individual learner or growing organisation the bridge is built. Come cross it.</p>
   <div class="cta-btns">
     <button class="btn-cta-main" onclick="showPage('courses')">Browse Courses →</button>
     <button class="btn-cta-ghost">Build Training for My Organisation</button>
@@ -175,9 +174,9 @@
       </div>
       <div class="clist-body">
         <div class="clist-body-inner">
-          <p class="clist-desc">A complete professional training programme that takes you from knowing English to teaching it online — with the credentials, confidence, and platform knowledge to get hired by employers globally.</p>
+          <p class="clist-desc">A complete professional training programme that takes you from knowing English to teaching it online with the credentials, confidence, and platform knowledge to get hired by employers globally.</p>
           <div class="clist-action">
-            <button class="btn-start" onclick="showPage('esl')">Start Now →</button>
+            <button class="btn-start" onclick="showPage('esl')">Register Now →</button>
           </div>
         </div>
       </div>
@@ -307,7 +306,7 @@
         </div>
       </div>
       <div class="pricing-card-footer">
-       <a href="login.html"> <button class="btn-start-full">Register Now →</button></a>
+       <a href="auth.html"> <button class="btn-start-full">Register Now →</button></a>
         <p class="pricing-note">Early bird pricing is available for a limited number of spots. Both options include the full course, employment support, and certificate.</p>
       </div>
     </div>
@@ -384,11 +383,7 @@
 </div>
 
 </div>
-<footer>
-  <div class="footer-brand">Tall Bridge<span>.</span> Institute</div>
-  <p>Know, Do, Be, Have... More. &copy; 2025 Tall Bridge Institute.</p>
-  <p>hello@tallbridgeinstitute.com</p>
-</footer>
+
 </div>
 
 <script src ="script.js"></script>
