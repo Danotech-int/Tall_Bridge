@@ -35,3 +35,29 @@ function showPage(pageId) {
     // Show the targeted page
     document.getElementById('page-' + pageId).classList.add('active');
 }
+
+/* ============================================================
+   MOBILE NAV TOGGLE — paste at the bottom of script.js
+   ============================================================ */
+
+(function () {
+  var toggle = document.getElementById('mobile-nav-toggle');
+  var navLinks = document.querySelector('.nav-links');
+
+  if (!toggle || !navLinks) return;
+
+  toggle.addEventListener('click', function () {
+    var isOpen = navLinks.classList.toggle('open');
+    toggle.classList.toggle('open', isOpen);
+    toggle.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  // Close nav when a link is clicked (since nav uses onclick= not hrefs)
+  navLinks.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', function () {
+      navLinks.classList.remove('open');
+      toggle.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+})();

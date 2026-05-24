@@ -1452,9 +1452,273 @@ footer p {
     font-size: 0.8rem;
 }
 
-/* Example of what you should be adding to the BOTTOM of style.css */
+/* ============================================================
+   RESPONSIVE STYLES — paste at the very bottom of style.css
+   ============================================================ */
+
+/* ── ROOT FIX: stops any element from causing horizontal scroll ── */
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+* {
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+/* ── Hamburger button ─────────────────────────────────────── */
+.nav-mobile-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 18px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 110;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.nav-mobile-toggle .bar {
+  width: 100%;
+  height: 2.5px;
+  background-color: var(--persian);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  display: block;
+}
+
+.nav-mobile-toggle.open .bar:nth-child(1) { transform: translateY(7.75px) rotate(45deg); }
+.nav-mobile-toggle.open .bar:nth-child(2) { opacity: 0; }
+.nav-mobile-toggle.open .bar:nth-child(3) { transform: translateY(-7.75px) rotate(-45deg); }
+
+/* ══════════════════════════════════════════════════════════════
+   TABLET — 1024px
+══════════════════════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  nav { padding: .9rem 2rem; }
+  .hero { padding: 4rem 2rem 0; }
+  .hero h1 { font-size: 2.6rem; }
+  .courses-preview { padding: 3.5rem 2rem; }
+  .course-grid { grid-template-columns: repeat(2, 1fr); }
+  .b2b-inner { padding: 4rem 2rem; }
+  .b2b-grid { gap: 2rem; }
+  .cta { padding: 4rem 2rem; }
+  .courses-hero { padding: 3rem 2rem 2.5rem; }
+  .courses-main { padding: 2.5rem 2rem; }
+  .detail-hero { padding: 3rem 2rem 2.5rem; }
+  .detail-body { padding: 3rem 2rem; grid-template-columns: 1fr 300px; gap: 2rem; }
+  .testimonials { padding: 3rem 2rem; }
+  .faq { padding: 3rem 2rem; }
+  footer { padding: 2rem; }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   MOBILE — 768px
+══════════════════════════════════════════════════════════════ */
 @media (max-width: 768px) {
-    /* Rules here only apply when the screen is phone-sized */
-    body { font-size: 14px; }
-    .auth-card { width: 95%; }
+
+  /* ── Nav ── */
+  nav {
+    padding: .85rem 1.25rem;
+    position: relative;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background: #fff;
+    flex-direction: column;
+    gap: 0;
+    padding: 0;
+    border-top: 1px solid #ede4f8;
+    box-shadow: 0 8px 24px rgba(66, 24, 105, .12);
+    z-index: 200;
+    list-style: none;
+  }
+
+  .nav-links.open { display: flex; }
+
+  .nav-links li { width: 100%; }
+
+  .nav-links li a {
+    display: block;
+    padding: .9rem 1.5rem;
+    font-size: .95rem;
+    border-bottom: 1px solid #f3eeff;
+    color: var(--persian);
+    cursor: pointer;
+  }
+
+  .nav-links li:last-child a { border-bottom: none; }
+
+  .nav-auth { display: none; }
+
+  .nav-mobile-toggle { display: flex; }
+
+  /* ── Hero ── */
+  .hero {
+    padding: 2.5rem 1.25rem 2rem;
+    min-height: auto;
+  }
+
+  .hero-wave {
+    width: 200px;
+    opacity: .2;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+    line-height: 1.15;
+  }
+
+  .hero-sub {
+    font-size: .9rem;
+    margin-bottom: 2rem;
+  }
+
+  .hero-btns {
+    flex-direction: column;
+    gap: .75rem;
+  }
+
+  .hero-btns button { width: 100%; }
+
+  /* ── Arc ── */
+  .arc {
+    flex-direction: column;
+  }
+
+  .arc-step {
+    border-right: none;
+    border-bottom: 1px solid var(--grape);
+  }
+
+  .arc-step:last-child { border-bottom: none; }
+  .arc-arrow { display: none; }
+
+  /* ── Courses preview ── */
+  .courses-preview { padding: 2.5rem 1.25rem; }
+  .section-h2 { font-size: 1.7rem; }
+  .course-grid { grid-template-columns: 1fr; gap: 1rem; }
+
+  /* ── B2B ── */
+  .b2b-inner { padding: 2.5rem 1.25rem; }
+  .b2b-grid { grid-template-columns: 1fr; }
+  .b2b .btn-outline-lime { width: 100%; }
+
+  /* ── CTA ── */
+  .cta { padding: 3rem 1.25rem; }
+  .cta h2 { font-size: 1.8rem; }
+  .cta-btns { flex-direction: column; align-items: stretch; }
+  .cta-btns button { width: 100%; }
+
+  /* ── Footer ── */
+  footer {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.75rem 1.25rem;
+    gap: .5rem;
+  }
+
+  /* ── Courses page ── */
+  .courses-hero { padding: 2.5rem 1.25rem 2rem; }
+  .courses-hero h1 { font-size: 2rem; }
+  .courses-main { padding: 1.5rem 1.25rem; }
+
+  .clist-top {
+    padding: 1rem 1.25rem;
+    flex-wrap: wrap;
+    gap: .75rem;
+    align-items: flex-start;
+  }
+
+  .clist-left { gap: .75rem; }
+
+  .clist-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.1rem;
+  }
+
+  .clist-title-block h3 { font-size: 1rem; }
+
+  .clist-right {
+    width: 100%;
+    gap: .5rem;
+    justify-content: flex-start;
+    padding-left: calc(40px + .75rem);
+  }
+
+  .clist-chevron { margin-left: auto; }
+
+  .clist-body-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 1.25rem 1.4rem;
+    gap: 1rem;
+  }
+
+  .clist-action { width: 100%; }
+  .clist-action button { width: 100%; }
+
+  /* ── Detail hero ── */
+  .detail-hero { padding: 2.5rem 1.25rem 2rem; }
+  .detail-hero h1 { font-size: 1.9rem; }
+  .detail-hero-sub { font-size: .9rem; }
+
+  .detail-meta-strip {
+    gap: .6rem;
+    flex-wrap: wrap;
+  }
+
+  .detail-meta-item {
+    min-width: calc(50% - .3rem);
+    flex: 1;
+  }
+
+  /* ── Detail body — stack sidebar below ── */
+  .detail-body {
+    grid-template-columns: 1fr;
+    padding: 2rem 1.25rem;
+    gap: 2rem;
+  }
+
+  .detail-sidebar { position: static; }
+
+  /* ── Testimonials ── */
+  .testimonials { padding: 2.5rem 1.25rem; }
+  .testi-grid { grid-template-columns: 1fr; gap: 1rem; }
+
+  /* ── FAQ ── */
+  .faq { padding: 2rem 1.25rem; }
+  .faq-q { font-size: .95rem; }
+
+  /* ── Coming soon ── */
+  .coming-detail { padding: 3rem 1.25rem; }
+
+  /* ── Philosophy ── */
+  .philosophy { padding: 2.5rem 1.25rem; }
+  .phil-grid { grid-template-columns: 1fr; gap: 2rem; }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   SMALL MOBILE — 480px
+══════════════════════════════════════════════════════════════ */
+@media (max-width: 480px) {
+  .hero h1 { font-size: 1.75rem; }
+  .section-h2 { font-size: 1.45rem; }
+  .courses-hero h1 { font-size: 1.75rem; }
+  .detail-hero h1 { font-size: 1.6rem; }
+  .detail-meta-item { min-width: 100%; }
+  .cta h2 { font-size: 1.5rem; }
+  .pricing-card-body { padding: 1rem; }
+  .pricing-card-footer { padding: 0 1rem 1rem; }
 }
