@@ -6,6 +6,10 @@
   <title>Login / Sign Up — Tall Bridge Institute</title>
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+
+  <!-- ── Supabase JS client (CDN) ── -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
   <style>
     /* ── Reset & base ────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -49,10 +53,7 @@
       cursor: pointer;
     }
 
-    .auth-brand-logo img {
-      height: 36px;
-      width: auto;
-    }
+    .auth-brand-logo img { height: 36px; width: auto; }
 
     .auth-brand-logo-text {
       font-family: 'Lora', serif;
@@ -91,10 +92,7 @@
       line-height: 1.25;
     }
 
-    .auth-brand-heading em {
-      font-style: italic;
-      color: #96D74C;
-    }
+    .auth-brand-heading em { font-style: italic; color: #96D74C; }
 
     .auth-brand-sub {
       font-family: 'DM Sans', sans-serif;
@@ -104,7 +102,6 @@
       max-width: 340px;
     }
 
-    /* Course context card on brand panel */
     .auth-course-context {
       background: rgba(150, 215, 76, 0.08);
       border: 1px solid rgba(150, 215, 76, 0.25);
@@ -139,15 +136,9 @@
       color: rgba(255,255,255,0.5);
     }
 
-    .auth-course-context-price strong {
-      color: #96D74C;
-      font-size: 1rem;
-    }
+    .auth-course-context-price strong { color: #96D74C; font-size: 1rem; }
 
-    .auth-brand-footer {
-      position: relative;
-      z-index: 1;
-    }
+    .auth-brand-footer { position: relative; z-index: 1; }
 
     .auth-brand-footer p {
       font-family: 'DM Sans', sans-serif;
@@ -166,12 +157,9 @@
       min-height: 100vh;
     }
 
-    .auth-form-inner {
-      width: 100%;
-      max-width: 400px;
-    }
+    .auth-form-inner { width: 100%; max-width: 400px; }
 
-    /* Mobile course context (shows only on mobile) */
+    /* Mobile course context */
     .auth-mobile-course {
       display: none;
       background: #f0fbe0;
@@ -198,12 +186,7 @@
       color: #0d0d0d;
     }
 
-    .auth-mobile-course-price {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.8rem;
-      color: #555;
-    }
-
+    .auth-mobile-course-price { font-family: 'DM Sans', sans-serif; font-size: 0.8rem; color: #555; }
     .auth-mobile-course-price strong { color: #721CB8; }
 
     /* ── Tab switcher ────────────────────────────────── */
@@ -246,10 +229,7 @@
       margin-bottom: 0.4rem;
     }
 
-    .auth-form-heading em {
-      font-style: italic;
-      color: #721CB8;
-    }
+    .auth-form-heading em { font-style: italic; color: #721CB8; }
 
     .auth-form-sub {
       font-family: 'DM Sans', sans-serif;
@@ -279,11 +259,7 @@
       text-decoration: none;
     }
 
-    .btn-google:hover {
-      border-color: #bbb;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-    }
-
+    .btn-google:hover { border-color: #bbb; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
     .btn-google svg { flex-shrink: 0; }
 
     /* ── Divider ─────────────────────────────────────── */
@@ -295,24 +271,13 @@
     }
 
     .auth-divider::before,
-    .auth-divider::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: #e8e8e8;
-    }
+    .auth-divider::after { content: ''; flex: 1; height: 1px; background: #e8e8e8; }
 
-    .auth-divider span {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.75rem;
-      color: #bbb;
-    }
+    .auth-divider span { font-family: 'DM Sans', sans-serif; font-size: 0.75rem; color: #bbb; }
 
     /* ── Form fields ─────────────────────────────────── */
     .auth-form { display: flex; flex-direction: column; gap: 1rem; }
-
     .field-group { display: flex; flex-direction: column; gap: 0.35rem; }
-
     .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
 
     .field-group label {
@@ -352,7 +317,6 @@
 
     .field-error.visible { display: block; }
 
-    /* Forgot password */
     .forgot-link {
       font-family: 'DM Sans', sans-serif;
       font-size: 0.78rem;
@@ -383,12 +347,9 @@
 
     .btn-auth-submit:hover { background: #222; }
     .btn-auth-submit:active { transform: scale(0.99); }
+    .btn-auth-submit:disabled { opacity: 0.6; cursor: not-allowed; }
 
-    .btn-auth-submit.lime {
-      background: #96D74C;
-      color: #0d0d0d;
-    }
-
+    .btn-auth-submit.lime { background: #96D74C; color: #0d0d0d; }
     .btn-auth-submit.lime:hover { background: #86c43c; }
 
     /* ── Bottom switch link ──────────────────────────── */
@@ -400,13 +361,7 @@
       margin-top: 1.25rem;
     }
 
-    .auth-switch a {
-      color: #721CB8;
-      font-weight: 500;
-      text-decoration: none;
-      cursor: pointer;
-    }
-
+    .auth-switch a { color: #721CB8; font-weight: 500; text-decoration: none; cursor: pointer; }
     .auth-switch a:hover { text-decoration: underline; }
 
     /* ── Form panels ─────────────────────────────────── */
@@ -435,12 +390,7 @@
       justify-content: center;
     }
 
-    .auth-success h3 {
-      font-family: 'Lora', serif;
-      font-size: 1.3rem;
-      font-weight: 600;
-      color: #0d0d0d;
-    }
+    .auth-success h3 { font-family: 'Lora', serif; font-size: 1.3rem; font-weight: 600; color: #0d0d0d; }
 
     .auth-success p {
       font-family: 'DM Sans', sans-serif;
@@ -450,151 +400,72 @@
       line-height: 1.6;
     }
 
-    /* ── Nav override for auth page ──────────────────── */
-    /* The existing nav from style.css will apply; we just override display */
     nav { position: relative; z-index: 10; }
 
     /* ── Password strength ───────────────────────────── */
-    .password-strength {
-      height: 3px;
-      border-radius: 2px;
-      background: #eee;
-      margin-top: 0.4rem;
-      overflow: hidden;
-    }
-
-    .password-strength-bar {
-      height: 100%;
-      width: 0%;
-      border-radius: 2px;
-      transition: width 0.3s, background 0.3s;
-    }
-
-    .password-strength-label {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.7rem;
-      color: #aaa;
-      margin-top: 0.25rem;
-    }
+    .password-strength { height: 3px; border-radius: 2px; background: #eee; margin-top: 0.4rem; overflow: hidden; }
+    .password-strength-bar { height: 100%; width: 0%; border-radius: 2px; transition: width 0.3s, background 0.3s; }
+    .password-strength-label { font-family: 'DM Sans', sans-serif; font-size: 0.7rem; color: #aaa; margin-top: 0.25rem; }
 
     /* ── Terms text ──────────────────────────────────── */
-    .auth-terms {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.72rem;
-      color: #aaa;
-      text-align: center;
-      line-height: 1.5;
-      margin-top: 0.5rem;
-    }
-
+    .auth-terms { font-family: 'DM Sans', sans-serif; font-size: 0.72rem; color: #aaa; text-align: center; line-height: 1.5; margin-top: 0.5rem; }
     .auth-terms a { color: #721CB8; text-decoration: none; }
     .auth-terms a:hover { text-decoration: underline; }
 
-    /* ── Mobile nav (hamburger) ──────────────────────── */
-    .nav-mobile-toggle {
-      display: none;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 0.25rem;
+    /* ── Toast notification ──────────────────────────── */
+    .auth-toast {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(80px);
+      background: #0d0d0d;
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      z-index: 1000;
+      transition: transform 0.3s ease;
+      white-space: nowrap;
     }
 
-    .nav-mobile-toggle span {
-      display: block;
-      width: 22px;
-      height: 2px;
-      background: currentColor;
-      margin: 4px 0;
-      transition: all 0.2s;
-    }
+    .auth-toast.show { transform: translateX(-50%) translateY(0); }
+    .auth-toast.error { background: #e53e3e; }
+    .auth-toast.success { background: #38a169; }
 
-    /* ══════════════════════════════════════════════════
-       RESPONSIVE STYLES
-    ══════════════════════════════════════════════════ */
+    /* ── Mobile nav ──────────────────────────────────── */
+    .nav-mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.25rem; }
+    .nav-mobile-toggle span { display: block; width: 22px; height: 2px; background: currentColor; margin: 4px 0; transition: all 0.2s; }
 
-    /* Tablet */
+    /* ══ RESPONSIVE ══ */
     @media (max-width: 900px) {
-      .auth-page {
-        grid-template-columns: 1fr;
-      }
-
-      .auth-brand {
-        display: none; /* hide brand panel on mobile, show context inline */
-      }
-
-      .auth-form-panel {
-        padding: 2rem 1.5rem;
-        min-height: calc(100vh - 70px);
-        justify-content: flex-start;
-        padding-top: 2.5rem;
-      }
-
-      .auth-mobile-course.visible {
-        display: block;
-      }
+      .auth-page { grid-template-columns: 1fr; }
+      .auth-brand { display: none; }
+      .auth-form-panel { padding: 2rem 1.5rem; min-height: calc(100vh - 70px); justify-content: flex-start; padding-top: 2.5rem; }
+      .auth-mobile-course.visible { display: block; }
     }
 
-    /* Small mobile */
     @media (max-width: 480px) {
-      .auth-form-panel {
-        padding: 1.5rem 1.25rem;
-      }
-
-      .auth-form-inner {
-        max-width: 100%;
-      }
-
-      .field-row {
-        grid-template-columns: 1fr;
-      }
-
-      .auth-form-heading {
-        font-size: 1.4rem;
-      }
+      .auth-form-panel { padding: 1.5rem 1.25rem; }
+      .auth-form-inner { max-width: 100%; }
+      .field-row { grid-template-columns: 1fr; }
+      .auth-form-heading { font-size: 1.4rem; }
     }
 
-    /* ── Nav responsive ──────────────────────────────── */
     @media (max-width: 768px) {
-      nav {
-        position: relative;
-      }
-
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: #0d0d0d;
-        flex-direction: column;
-        padding: 1rem 1.5rem;
-        gap: 0.25rem;
-        border-top: 1px solid rgba(255,255,255,0.08);
-        z-index: 100;
-      }
-
+      nav { position: relative; }
+      .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: #0d0d0d; flex-direction: column; padding: 1rem 1.5rem; gap: 0.25rem; border-top: 1px solid rgba(255,255,255,0.08); z-index: 100; }
       .nav-links.open { display: flex; }
-
-      .nav-links li a {
-        display: block;
-        padding: 0.6rem 0;
-        border-bottom: 1px solid rgba(255,255,255,0.05);
-      }
-
-      .nav-auth {
-        display: none;
-      }
-
-      .nav-mobile-toggle {
-        display: block;
-        color: #fff;
-      }
+      .nav-links li a { display: block; padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+      .nav-auth { display: none; }
+      .nav-mobile-toggle { display: block; color: #fff; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ════ NAV (matches existing site) ════ -->
+  <!-- ════ NAV ════ -->
   <nav>
     <div class="nav-logo" onclick="window.location.href='index.html'">
       <img src="logo.png" alt="Tall Bridge Institute">
@@ -609,14 +480,8 @@
       <li><a href="index.html#organisations">For Organisations</a></li>
       <li><a href="index.html#about">About</a></li>
     </ul>
-    <div class="nav-auth">
-      <a href="auth.html?mode=login" class="btn-ghost">Login</a>
-      <a href="auth.html?mode=signup" class="btn-dark">Sign Up</a>
-    </div>
     <button class="nav-mobile-toggle" id="nav-toggle" aria-label="Toggle menu">
-      <span></span>
-      <span></span>
-      <span></span>
+      <span></span><span></span><span></span>
     </button>
   </nav>
 
@@ -648,16 +513,12 @@
           </p>
         </div>
 
-        <!-- Course context — shown when ?course= param is present -->
         <div class="auth-course-context" id="brand-course-context">
           <div class="auth-course-context-label">You're enrolling in</div>
           <div class="auth-course-context-name" id="brand-course-name">ESL Online Teaching</div>
-          <div class="auth-course-context-price" id="brand-course-price">
-            From <strong>$70</strong> · Enrolling Now
-          </div>
+          <div class="auth-course-context-price" id="brand-course-price">From <strong>$70</strong> · Enrolling Now</div>
         </div>
 
-        <!-- Trust signals -->
         <div style="display:flex;flex-direction:column;gap:0.6rem;">
           <div style="display:flex;align-items:center;gap:0.6rem;">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="#96D74C" stroke-opacity="0.5"/><path d="M5 8l2 2 4-4" stroke="#96D74C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -683,7 +544,7 @@
     <div class="auth-form-panel">
       <div class="auth-form-inner">
 
-        <!-- Mobile course context (visible only on mobile when ?course= set) -->
+        <!-- Mobile course context -->
         <div class="auth-mobile-course" id="mobile-course-context">
           <div class="auth-mobile-course-label">Enrolling in</div>
           <div class="auth-mobile-course-name" id="mobile-course-name">ESL Online Teaching</div>
@@ -702,7 +563,7 @@
           <p class="auth-form-sub">Log in to continue your learning journey.</p>
 
           <a href="#" class="btn-google" onclick="handleGoogle(event)">
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
               <path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.716v2.259h2.908c1.702-1.567 2.684-3.875 2.684-6.615z" fill="#4285F4"/>
               <path d="M9 18c2.43 0 4.467-.806 5.956-2.184l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332C2.438 15.983 5.482 18 9 18z" fill="#34A853"/>
               <path d="M3.964 10.712A5.41 5.41 0 013.682 9c0-.593.102-1.17.282-1.712V4.956H.957A9.009 9.009 0 000 9c0 1.452.348 2.827.957 4.044l3.007-2.332z" fill="#FBBC05"/>
@@ -723,7 +584,7 @@
               <label for="login-password">Password</label>
               <input type="password" id="login-password" placeholder="Your password" autocomplete="current-password">
               <span class="field-error" id="login-password-error">Password is required.</span>
-              <a href="#" class="forgot-link">Forgot your password?</a>
+              <a href="#" class="forgot-link" onclick="handleForgotPassword(event)">Forgot your password?</a>
             </div>
             <button type="submit" class="btn-auth-submit" id="btn-login">Log in →</button>
           </form>
@@ -739,7 +600,7 @@
           <p class="auth-form-sub">One account. Every course you'll ever need.</p>
 
           <a href="#" class="btn-google" onclick="handleGoogle(event)">
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
               <path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.716v2.259h2.908c1.702-1.567 2.684-3.875 2.684-6.615z" fill="#4285F4"/>
               <path d="M9 18c2.43 0 4.467-.806 5.956-2.184l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332C2.438 15.983 5.482 18 9 18z" fill="#34A853"/>
               <path d="M3.964 10.712A5.41 5.41 0 013.682 9c0-.593.102-1.17.282-1.712V4.956H.957A9.009 9.009 0 000 9c0 1.452.348 2.827.957 4.044l3.007-2.332z" fill="#FBBC05"/>
@@ -806,36 +667,60 @@
     </div><!-- /auth-form-panel -->
   </div><!-- /auth-page -->
 
+  <!-- ── Toast ── -->
+  <div class="auth-toast" id="auth-toast"></div>
+
   <script>
+    // ══════════════════════════════════════════════════════
+    //  SUPABASE AUTH — Tall Bridge Institute
+    // ══════════════════════════════════════════════════════
+
+    const SUPABASE_URL = 'https://xhxchpsfgxrzpyndxdyv.supabase.co';
+    const SUPABASE_KEY = 'sb_publishable_3zfwFx2JSKvI2EQSl6I_uA_q3yJPgG8';
+    const { createClient } = supabase;
+    const sb = createClient(SUPABASE_URL, SUPABASE_KEY);
+
     // ── URL params ──────────────────────────────────────
     const params = new URLSearchParams(window.location.search);
-    const mode = params.get('mode') || 'login';
+    const mode   = params.get('mode')   || 'login';
     const course = params.get('course') || '';
 
-    // Courses data
     const COURSES = {
-      esl: { name: 'ESL Online Teaching', price: '$70', badge: 'Enrolling Now' },
-      voiceover: { name: 'Professional Voiceover', price: 'TBA', badge: 'Coming Soon' },
-      pm: { name: 'Project Management for Beginners', price: 'TBA', badge: 'Coming Soon' },
+      esl:       { name: 'ESL Online Teaching',              price: '$70',  badge: 'Enrolling Now' },
+      voiceover: { name: 'Professional Voiceover',           price: 'TBA',  badge: 'Coming Soon'   },
+      pm:        { name: 'Project Management for Beginners', price: 'TBA',  badge: 'Coming Soon'   },
     };
 
     // ── Init on load ────────────────────────────────────
-    document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', async () => {
+
+      // Check if already logged in → skip auth entirely
+      const { data: { session } } = await sb.auth.getSession();
+      if (session) {
+        redirectAfterAuth();
+        return;
+      }
+
       // Set initial tab
       if (mode === 'signup') switchTab('signup');
 
-      // Show course context if course param present
+      // Show course context
       if (course && COURSES[course]) {
         const c = COURSES[course];
-        // Brand panel (desktop)
         document.getElementById('brand-course-name').textContent = c.name;
-        document.getElementById('brand-course-price').innerHTML = `From <strong>${c.price}</strong> · ${c.badge}`;
+        document.getElementById('brand-course-price').innerHTML  = `From <strong>${c.price}</strong> · ${c.badge}`;
         document.getElementById('brand-course-context').classList.add('visible');
-        // Mobile strip
         document.getElementById('mobile-course-name').textContent = c.name;
         document.querySelector('#mobile-course-context .auth-mobile-course-price').innerHTML = `From <strong>${c.price}</strong> · ${c.badge}`;
         document.getElementById('mobile-course-context').classList.add('visible');
       }
+
+      // Handle Google OAuth redirect back to this page
+      sb.auth.onAuthStateChange((event, session) => {
+        if ((event === 'SIGNED_IN') && session) {
+          showSuccess('login', session.user.email);
+        }
+      });
     });
 
     // ── Tab switching ───────────────────────────────────
@@ -847,8 +732,6 @@
       document.getElementById('tab-signup').setAttribute('aria-selected', !isLogin);
       document.getElementById('panel-login').classList.toggle('active', isLogin);
       document.getElementById('panel-signup').classList.toggle('active', !isLogin);
-
-      // Update URL without reload
       const url = new URL(window.location);
       url.searchParams.set('mode', tab);
       window.history.replaceState({}, '', url);
@@ -859,11 +742,45 @@
       document.getElementById('nav-links').classList.toggle('open');
     });
 
-    // ── Google OAuth handler ─────────────────────────────
-    function handleGoogle(e) {
+    // ── Toast helper ────────────────────────────────────
+    function showToast(msg, type = '') {
+      const t = document.getElementById('auth-toast');
+      t.textContent = msg;
+      t.className   = 'auth-toast ' + type;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 4000);
+    }
+
+    // ── Google OAuth ────────────────────────────────────
+    async function handleGoogle(e) {
       e.preventDefault();
-      // Replace this href with your actual Google OAuth endpoint
-      alert('Connect your Google OAuth provider here.\n\nFor now, use the email form below.');
+      const redirectTo = window.location.origin + window.location.pathname +
+        (course ? `?course=${course}` : '');
+
+      const { error } = await sb.auth.signInWithOAuth({
+        provider: 'google',
+        options:  { redirectTo }
+      });
+
+      if (error) showToast('Google sign-in failed: ' + error.message, 'error');
+    }
+
+    // ── Forgot password ──────────────────────────────────
+    async function handleForgotPassword(e) {
+      e.preventDefault();
+      const email = document.getElementById('login-email').value.trim();
+      if (!isValidEmail(email)) {
+        showError('login-email-error', 'Enter your email address above first.');
+        return;
+      }
+      const { error } = await sb.auth.resetPasswordForEmail(email, {
+        redirectTo: window.location.origin + '/auth.html'
+      });
+      if (error) {
+        showToast('Could not send reset email: ' + error.message, 'error');
+      } else {
+        showToast('Password reset email sent! Check your inbox.', 'success');
+      }
     }
 
     // ── Validation helpers ──────────────────────────────
@@ -871,7 +788,9 @@
       const el = document.getElementById(id);
       el.textContent = msg;
       el.classList.add('visible');
-      el.previousElementSibling.classList.add('error');
+      if (el.previousElementSibling && el.previousElementSibling.tagName === 'INPUT') {
+        el.previousElementSibling.classList.add('error');
+      }
     }
 
     function clearError(id) {
@@ -888,103 +807,153 @@
 
     // ── Password strength ────────────────────────────────
     function checkPasswordStrength(val) {
-      const bar = document.getElementById('strength-bar');
+      const bar   = document.getElementById('strength-bar');
       const label = document.getElementById('strength-label');
       let score = 0;
-      if (val.length >= 8) score++;
-      if (/[A-Z]/.test(val)) score++;
-      if (/[0-9]/.test(val)) score++;
+      if (val.length >= 8)          score++;
+      if (/[A-Z]/.test(val))        score++;
+      if (/[0-9]/.test(val))        score++;
       if (/[^a-zA-Z0-9]/.test(val)) score++;
-
       const map = [
-        { w: '0%', bg: '#eee', text: '' },
-        { w: '25%', bg: '#e53e3e', text: 'Weak' },
-        { w: '50%', bg: '#ed8936', text: 'Fair' },
-        { w: '75%', bg: '#96D74C', text: 'Good' },
+        { w: '0%',   bg: '#eee',    text: ''       },
+        { w: '25%',  bg: '#e53e3e', text: 'Weak'   },
+        { w: '50%',  bg: '#ed8936', text: 'Fair'   },
+        { w: '75%',  bg: '#96D74C', text: 'Good'   },
         { w: '100%', bg: '#38a169', text: 'Strong' },
       ];
       const s = val.length === 0 ? map[0] : map[Math.max(1, score)];
-      bar.style.width = s.w;
+      bar.style.width      = s.w;
       bar.style.background = s.bg;
-      label.textContent = s.text;
-      label.style.color = s.bg;
+      label.textContent    = s.text;
+      label.style.color    = s.bg;
     }
 
-    // ── Login handler ───────────────────────────────────
-    function handleLogin(e) {
+    // ── LOGIN ────────────────────────────────────────────
+    async function handleLogin(e) {
       e.preventDefault();
       let valid = true;
 
-      const email = document.getElementById('login-email').value.trim();
+      const email    = document.getElementById('login-email').value.trim();
       const password = document.getElementById('login-password').value;
 
       clearError('login-email-error');
       clearError('login-password-error');
 
-      if (!isValidEmail(email)) {
-        showError('login-email-error', 'Please enter a valid email address.');
-        valid = false;
-      }
-      if (!password) {
-        showError('login-password-error', 'Password is required.');
-        valid = false;
-      }
-
+      if (!isValidEmail(email)) { showError('login-email-error', 'Please enter a valid email address.'); valid = false; }
+      if (!password)             { showError('login-password-error', 'Password is required.');            valid = false; }
       if (!valid) return;
 
       const btn = document.getElementById('btn-login');
       btn.textContent = 'Logging in...';
-      btn.disabled = true;
+      btn.disabled    = true;
 
-      // ── Replace this with your actual auth call ──
-      setTimeout(() => {
-        showSuccess('login', email);
-      }, 1200);
+      const { data, error } = await sb.auth.signInWithPassword({ email, password });
+
+      if (error) {
+        btn.textContent = 'Log in →';
+        btn.disabled    = false;
+        const msg = error.message.toLowerCase();
+        if (msg.includes('invalid login credentials') || msg.includes('invalid login')) {
+          showError('login-email-error', 'Incorrect email or password. Please try again.');
+        } else if (msg.includes('email not confirmed')) {
+          showError('login-email-error', 'Please confirm your email before logging in. Check your inbox.');
+        } else {
+          showError('login-email-error', error.message);
+        }
+        return;
+      }
+
+      showSuccess('login', data.user.email);
     }
 
-    // ── Signup handler ──────────────────────────────────
-    function handleSignup(e) {
+    // ── SIGN UP ──────────────────────────────────────────
+    async function handleSignup(e) {
       e.preventDefault();
       let valid = true;
 
-      const first = document.getElementById('signup-firstname').value.trim();
-      const last = document.getElementById('signup-lastname').value.trim();
-      const email = document.getElementById('signup-email').value.trim();
-      const pass = document.getElementById('signup-password').value;
+      const first   = document.getElementById('signup-firstname').value.trim();
+      const last    = document.getElementById('signup-lastname').value.trim();
+      const email   = document.getElementById('signup-email').value.trim();
+      const pass    = document.getElementById('signup-password').value;
       const confirm = document.getElementById('signup-confirm').value;
 
-      ['signup-firstname-error','signup-lastname-error','signup-email-error','signup-password-error','signup-confirm-error'].forEach(clearError);
+      ['signup-firstname-error','signup-lastname-error','signup-email-error',
+       'signup-password-error','signup-confirm-error'].forEach(clearError);
 
-      if (!first) { showError('signup-firstname-error', 'Required.'); valid = false; }
-      if (!last)  { showError('signup-lastname-error', 'Required.'); valid = false; }
-      if (!isValidEmail(email)) { showError('signup-email-error', 'Please enter a valid email address.'); valid = false; }
-      if (pass.length < 8) { showError('signup-password-error', 'Password must be at least 8 characters.'); valid = false; }
-      if (pass !== confirm) { showError('signup-confirm-error', 'Passwords do not match.'); valid = false; }
-
+      if (!first)               { showError('signup-firstname-error', 'Required.');                               valid = false; }
+      if (!last)                { showError('signup-lastname-error',  'Required.');                               valid = false; }
+      if (!isValidEmail(email)) { showError('signup-email-error',    'Please enter a valid email address.');      valid = false; }
+      if (pass.length < 8)      { showError('signup-password-error', 'Password must be at least 8 characters.'); valid = false; }
+      if (pass !== confirm)     { showError('signup-confirm-error',  'Passwords do not match.');                  valid = false; }
       if (!valid) return;
 
       const btn = document.getElementById('btn-signup');
       btn.textContent = 'Creating account...';
-      btn.disabled = true;
+      btn.disabled    = true;
 
-      // ── Replace this with your actual auth call ──
-      setTimeout(() => {
+      const { data, error } = await sb.auth.signUp({
+        email,
+        password: pass,
+        options: {
+          data: {
+            first_name: first,
+            last_name:  last,
+            full_name:  `${first} ${last}`,
+          }
+        }
+      });
+
+      if (error) {
+        btn.textContent = 'Create account →';
+        btn.disabled    = false;
+        const msg = error.message.toLowerCase();
+        if (msg.includes('already registered') || msg.includes('already been registered')) {
+          showError('signup-email-error', 'An account with this email already exists. Try logging in.');
+        } else {
+          showError('signup-email-error', error.message);
+        }
+        return;
+      }
+
+      // If email confirmation is OFF in Supabase → session exists → redirect
+      // If email confirmation is ON  → session is null → show check-email message
+      if (data.session) {
         showSuccess('signup', email);
-      }, 1200);
+      } else {
+        showEmailConfirmation(email);
+      }
+    }
+
+    // ── Email confirmation notice ────────────────────────
+    function showEmailConfirmation(email) {
+      const panel = document.getElementById('panel-signup');
+      panel.querySelector('form').style.display               = 'none';
+      panel.querySelector('.auth-form-heading').style.display = 'none';
+      panel.querySelector('.auth-form-sub').style.display     = 'none';
+      panel.querySelector('.btn-google').style.display        = 'none';
+      panel.querySelector('.auth-divider').style.display      = 'none';
+      panel.querySelector('.auth-switch').style.display       = 'none';
+
+      const success = document.getElementById('auth-success');
+      document.getElementById('success-message').innerHTML =
+        `We've sent a confirmation link to <strong>${email}</strong>.<br>
+         Click the link in that email to activate your account, then come back to log in.`;
+      success.classList.add('visible');
+      success.style.display = 'flex';
     }
 
     // ── Show success & redirect ──────────────────────────
     function showSuccess(type, email) {
-      // Hide form content
-      document.querySelector(`#panel-${type} form`).style.display = 'none';
-      document.querySelector(`#panel-${type} .auth-form-heading`).style.display = 'none';
-      document.querySelector(`#panel-${type} .auth-form-sub`).style.display = 'none';
-      document.querySelector(`#panel-${type} .btn-google`).style.display = 'none';
-      document.querySelector(`#panel-${type} .auth-divider`).style.display = 'none';
-      document.querySelector(`#panel-${type} .auth-switch`).style.display = 'none';
+      const panel = document.getElementById(`panel-${type}`);
+      panel.querySelector('form').style.display               = 'none';
+      panel.querySelector('.auth-form-heading').style.display = 'none';
+      panel.querySelector('.auth-form-sub').style.display     = 'none';
+      panel.querySelector('.btn-google').style.display        = 'none';
+      panel.querySelector('.auth-divider').style.display      = 'none';
+      panel.querySelector('.auth-switch').style.display       = 'none';
 
       const success = document.getElementById('auth-success');
-      const msg = document.getElementById('success-message');
+      const msg     = document.getElementById('success-message');
 
       if (course && COURSES[course]) {
         msg.textContent = `Taking you to complete your ${COURSES[course].name} enrollment...`;
@@ -995,17 +964,18 @@
       }
 
       success.classList.add('visible');
-      document.getElementById('auth-success').style.display = 'flex';
+      success.style.display = 'flex';
 
-      // ── Redirect after success ──
-      // Replace these destinations with your actual pages
-      setTimeout(() => {
-        if (course) {
-          window.location.href = `payment.html?course=${course}`;
-        } else {
-          window.location.href = 'dashboard.html';
-        }
-      }, 2000);
+      setTimeout(redirectAfterAuth, 2000);
+    }
+
+    // ── Redirect ─────────────────────────────────────────
+    function redirectAfterAuth() {
+      if (course) {
+        window.location.href = `payment.html?course=${course}`;
+      } else {
+        window.location.href = 'dashboard.html';
+      }
     }
   </script>
 </body>
