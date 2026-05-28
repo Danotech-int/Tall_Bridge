@@ -1452,10 +1452,6 @@ footer p {
     font-size: 0.8rem;
 }
 
-/* ============================================================
-   RESPONSIVE STYLES — paste at the very bottom of style.css
-   ============================================================ */
-
 /* ── ROOT FIX: stops any element from causing horizontal scroll ── */
 html, body {
   overflow-x: hidden;
